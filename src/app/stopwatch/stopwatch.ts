@@ -6,7 +6,7 @@ import {StopwatchService} from './stopwatch-svc';
     template:
         `
         <div class="container">
-          <h1>{{ time }}</h1>
+          <h1>{{ formatTime(time) }}</h1>
           <div class="btn-group">
             <button (click)="start()">Start</button>
             <button (click)="stop()">Stop</button>
@@ -26,6 +26,15 @@ export default class Stopwatch {
     constructor(stopwatchService: StopwatchService) {
         this.stopwatchService = stopwatchService;
         this.time = 0;
+    }
+
+    formatTime(timeMs: number) {
+        let minutes: string,
+            seconds: string;
+
+        minutes = Math.floor(timeMs / 60000).toString();
+        seconds = ((timeMs % 60000) / 1000).toFixed(3);
+        return minutes + ':' + (+seconds < 10 ? '0' : '') + seconds;
     }
 
     reset() {

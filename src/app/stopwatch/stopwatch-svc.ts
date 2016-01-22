@@ -38,6 +38,4 @@ export class StopwatchService {
         return this.lapTime
             + (this.startAt ? this.now() - this.startAt : 0);
     }
-
-
 }
