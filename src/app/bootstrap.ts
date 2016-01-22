@@ -1,4 +1,15 @@
 import {bootstrap} from 'angular2/platform/browser';
-import Greeting from './greeting/greeting';
+import {Component} from 'angular2/core';
+import {StopwatchService} from './stopwatch/stopwatch-svc';
 
-bootstrap(Greeting);
+import Stopwatch from './stopwatch/stopwatch';
+
+@Component({
+    selector: 'app',
+    directives: [Stopwatch],
+    template: '<div><stopwatch></stopwatch></div>'
+})
+
+class App { }
+
+bootstrap(App, [StopwatchService]);
