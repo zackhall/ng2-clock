@@ -17,6 +17,7 @@
     text-align: center;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
+    font-size: 10em;
 }
 
 .btn-group {
@@ -30,6 +31,9 @@
     width: 250px;
     text-decoration: none;
     text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
     background: transparent;
     border: 1px solid #bdc3c7;
     border-left-width: 0;
@@ -46,6 +50,14 @@
 .btn-group button:hover {
     background: #34495e;
     color: #fff;
+}
+
+.btn-group button:hover:first-child {
+    border-radius: 0 0 0 8px;
+}
+
+.btn-group button:hover:last-child {
+    border-radius: 0 0 8px 0;
 }
 
 .btn-group button:active {
