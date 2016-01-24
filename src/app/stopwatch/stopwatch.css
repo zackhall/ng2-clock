@@ -74,20 +74,15 @@
     /*width: 34%;*/
 }
 
-.btn-group button:hover {
-    background: #34495e;
-    color: #fff;
-}
-
-.btn-group button:hover:first-child {
+.btn-group button:first-child {
     border-radius: 0 0 0 8px;
 }
 
-.btn-group button:hover:last-child {
+.btn-group button:last-child {
     border-radius: 0 0 8px 0;
 }
 
 .btn-group button:active {
-    background: #fff;
-    color: #34495e;
+    background: #34495e;
+    color: #fff;
 }
