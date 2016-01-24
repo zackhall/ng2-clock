@@ -1,4 +1,5 @@
 import {Component} from 'angular2/core';
+import {NgClass} from 'angular2/common';
 import {StopwatchService} from './stopwatch-svc';
 
 @Component({
@@ -8,16 +9,21 @@ import {StopwatchService} from './stopwatch-svc';
         <div class="container">
           <h1>{{ formatTime(time) }}</h1>
           <div class="btn-group">
-            <button (click)="start()">Start</button>
-            <button (click)="stop()">Stop</button>
-            <button (click)="reset()">Reset</button>
+            <button (click)="toggle()">
+              <i class="icon" 
+                 [ngClass]="{ 'ion-play': !started, 'ion-pause': started }">
+              </i>
+            </button>
+            <button (click)="reset()"><i class="icon ion-refresh"></i></button>
           </div>
         </div>
         `,
-    styleUrls: ['app/stopwatch/stopwatch.css']
+    styleUrls: ['app/stopwatch/stopwatch.css'],
+    directives: [NgClass]
 })
 
 export default class Stopwatch {
+    public started: boolean;
     public stopwatchService: StopwatchService;
     public time: number;
 
@@ -26,6 +32,7 @@ export default class Stopwatch {
     constructor(stopwatchService: StopwatchService) {
         this.stopwatchService = stopwatchService;
         this.time = 0;
+        this.started = false;
     }
 
     formatTime(timeMs: number) {
@@ -39,6 +46,7 @@ export default class Stopwatch {
 
     reset() {
         this.stopwatchService.reset();
+        this.started = false;
         (this.update())();
     }
 
@@ -50,6 +58,16 @@ export default class Stopwatch {
     stop() {
         clearInterval(this.timer);
         this.stopwatchService.stop();
+    }
+
+    toggle() {
+        if (this.started) {
+            this.stop();
+        } else {
+            this.start();
+        }
+
+        this.started = !this.started;
     }
 
     update() {

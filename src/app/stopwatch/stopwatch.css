@@ -16,7 +16,7 @@
     text-align: center;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    font-size: 40px;
+    font-size: 80px;
 }
 
 @media (min-width: 768px) {
@@ -25,13 +25,17 @@
   }
 
   .container h1 {
-    font-size: 100px;
+    font-size: 150px;
   }
 }
 
 @media (min-width: 992px) {
   .container {
     width: 970px;
+  }
+
+  .container h1 {
+    font-size: 200px;
   }
 }
 
@@ -49,24 +53,25 @@
 }
 
 .btn-group button {
-    width: 33%;
+    width: 50%;
+    color: #4d4d4d;
     text-decoration: none;
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 40px;
     background: transparent;
     border: 1px solid #bdc3c7;
     border-left-width: 0;
     border-bottom-width: 0;
     display: inline-block;
-    padding: 1em 1.25em;
+    padding: 0.25em 1.25em;
     outline: 0;
 }
 
 .btn-group button:last-child {
     border-right-width: 0;
-    width: 34%;
+    /*width: 34%;*/
 }
 
 .btn-group button:hover {
