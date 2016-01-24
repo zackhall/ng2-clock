@@ -1,7 +1,6 @@
 .container {
-    width: 750px;
     background-color: #ecf0f1;
-    margin: 3em auto 1em auto;
+    margin: 1em auto 1em auto;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     -ms-border-radius: 8px;
@@ -17,7 +16,29 @@
     text-align: center;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    font-size: 10em;
+    font-size: 40px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+
+  .container h1 {
+    font-size: 100px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
 }
 
 .btn-group {
@@ -28,7 +49,7 @@
 }
 
 .btn-group button {
-    width: 250px;
+    width: 33%;
     text-decoration: none;
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
@@ -45,6 +66,7 @@
 
 .btn-group button:last-child {
     border-right-width: 0;
+    width: 34%;
 }
 
 .btn-group button:hover {
