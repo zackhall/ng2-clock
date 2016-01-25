@@ -1,5 +1,6 @@
 import {Component} from 'angular2/core';
-import {NgClass} from 'angular2/common';
+import {NgClass, NgIf, NgFor} from 'angular2/common';
+// import {Lap} from './stopwatch-svc';
 import {StopwatchService} from './stopwatch-svc';
 
 @Component({
@@ -15,11 +16,26 @@ import {StopwatchService} from './stopwatch-svc';
               </i>
             </button>
             <button (click)="reset()"><i class="icon ion-refresh"></i></button>
+            <button (click)="lap()">Split</button>
           </div>
+            <div class="laps"
+                *ngIf="stopwatchService.laps.length > 1">
+
+                <div class="lap"
+                    *ngFor="#lap of stopwatchService.laps; #i = index; #last = last">
+                    
+                    <div>Round {{ i }}</div>
+                    <div>{{ formatTime(lap.startMs) }}</div>
+                    <div *ngIf="last">{{ formatTime(time) }}</div>
+                    <div *ngIf="!last">{{ formatTime(lap.endMs) }}</div>
+
+                </div>
+
+            </div>
         </div>
         `,
     styleUrls: ['app/stopwatch/stopwatch.css'],
-    directives: [NgClass]
+    directives: [NgClass, NgIf, NgFor]
 })
 
 export default class Stopwatch {
@@ -44,14 +60,30 @@ export default class Stopwatch {
         return minutes + ':' + (+seconds < 10 ? '0' : '') + seconds;
     }
 
+    getUpdate() {
+        let self = this;
+
+        return () => {
+            self.time = this.stopwatchService.time();
+        };
+    }
+
+    lap() {
+        this.update();
+
+        if (this.time) {
+            this.stopwatchService.lap();
+        }
+    }
+
     reset() {
         this.stopwatchService.reset();
         this.started = false;
-        (this.update())();
+        this.update();
     }
 
     start() {
-        this.timer = setInterval(this.update(), 1);
+        this.timer = setInterval(this.getUpdate(), 1);
         this.stopwatchService.start();
     }
 
@@ -71,11 +103,7 @@ export default class Stopwatch {
     }
 
     update() {
-        let self = this;
-
-        return () => {
-            self.time = this.stopwatchService.time();
-        };
+        this.time = this.stopwatchService.time();
     }
 
     onClick() {

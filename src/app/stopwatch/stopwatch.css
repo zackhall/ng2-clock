@@ -1,5 +1,6 @@
 .container {
     background-color: #ecf0f1;
+    font-family: 'Roboto', sans-serif;
     margin: 1em auto 1em auto;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
@@ -14,7 +15,6 @@
 
 .container h1 {
     text-align: center;
-    font-family: 'Roboto', sans-serif;
     font-weight: 500;
     font-size: 80px;
 }
@@ -53,17 +53,16 @@
 }
 
 .btn-group button {
-    width: 50%;
-    color: #4d4d4d;
+    width: 33%;
     text-decoration: none;
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 40px;
-    background: transparent;
+    background: #34495e;
+    color: #fff;
     border: 1px solid #bdc3c7;
     border-left-width: 0;
-    border-bottom-width: 0;
     display: inline-block;
     padding: 0.25em 1.25em;
     outline: 0;
@@ -71,7 +70,7 @@
 
 .btn-group button:last-child {
     border-right-width: 0;
-    /*width: 34%;*/
+    width: 34%;
 }
 
 .btn-group button:first-child {
@@ -83,6 +82,16 @@
 }
 
 .btn-group button:active {
-    background: #34495e;
-    color: #fff;
+    background: transparent;
+    color: #4d4d4d;
+}
+
+.laps {
+    padding: 10px;
+}
+
+.lap {
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
 }
